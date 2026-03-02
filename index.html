@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Filmes por Isabel - Video & Story Maker. Transformando momentos em histórias que conectam. Portfólio de vídeos para Instagram, Reels, Institucionais e Eventos.">
+    <title>Filmes por Isabel | Video & Story Maker</title>
+
+    <!-- Google Fonts: Outfit (Moderno e elegante) e Lora (Serifada para contraste clássico) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons para ícones modernos e leves -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icons/LOGOTIPO FILMES POR ISABEL - ROSA.png">
+    <link rel="apple-touch-icon" href="icons/LOGOTIPO FILMES POR ISABEL - ROSA.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <a href="#inicio" class="logo">
+                <img src="icons/LOGOTIPO FILMES POR ISABEL - ROSA.png" alt="Logotipo Filmes por Isabel"
+                    class="logo-img">
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                </ul>
+            </nav>
+            <button class="menu-btn" aria-label="Abrir Menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO HERO -->
+        <section class="hero" id="inicio">
+            <div class="container hero-content">
+                <div class="hero-text fade-in-up">
+                    <span class="hero-subtitle">Video & Story Maker</span>
+                    <h1 class="hero-title">Filmes por Isabel</h1>
+                    <p class="hero-description">Transformando momentos em histórias que conectam.</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="button button-primary">Ver Portfólio</a>
+                        <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" class="button button-secondary">Fale
+                            Comigo</a>
+                    </div>
+                </div>
+                <!-- Imagem opcional para o Hero (pode ser vídeo curto de BG ou foto) -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE -->
+        <section class="sobre section" id="sobre">
+            <div class="container sobre-grid">
+                <div class="sobre-image slide-in-left hidden">
+                    <div class="image-placeholder">
+                        <i class="ph ph-camera-rotate"></i>
+                        <span>Sua Foto Aqui</span>
+                    </div>
+                </div>
+                <div class="sobre-text slide-in-right hidden">
+                    <h2 class="section-title">Sobre Mim</h2>
+                    <p>Olá! Sou a Isabel, o rosto por trás da Filmes por Isabel, apaixonada por contar histórias através
+                        das lentes.</p>
+                    <p>Acredito que cada marca, cada evento e cada pessoa tem uma essência única. Meu trabalho é
+                        capturar essa essência e transformá-la em vídeos que não apenas informam, mas emocionam e
+                        conectam você com seu público.</p>
+                    <p>Com um olhar sensível e foco na qualidade estética, produzo conteúdos pensados estrategicamente
+                        para engajar nas redes sociais, especialmente no Instagram.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO PORTFÓLIO -->
+        <section class="portfolio section bg-light" id="portfolio">
+            <div class="container">
+                <div class="section-header text-center fade-in-up hidden">
+                    <h2 class="section-title">Meu Portfólio</h2>
+                    <p class="section-subtitle">Um pouco do que criamos juntos</p>
+                </div>
+
+                <!-- Filtros de categorias (opcional para o futuro, vamos focar no grid primeiro) -->
+                <!-- Grid de Projetos -->
+                <div class="portfolio-grid fade-in-up hidden">
+
+                    <!-- Card 1 -->
+                    <div class="portfolio-card" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+                        <div class="portfolio-thumb">
+                            <span class="category-tag">Reels Instagram</span>
+                            <div class="play-icon">
+                                <i class="ph-fill ph-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Lançamento Coleção X</h3>
+                            <p>Marca Local • Moda</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="portfolio-card" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+                        <div class="portfolio-thumb">
+                            <span class="category-tag">Stories Criativos</span>
+                            <div class="play-icon">
+                                <i class="ph-fill ph-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Cobertura de Evento</h3>
+                            <p>Conteúdo dinâmico p/ stories</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="portfolio-card" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+                        <div class="portfolio-thumb">
+                            <span class="category-tag">Institucional</span>
+                            <div class="play-icon">
+                                <i class="ph-fill ph-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Bastidores da Clínica</h3>
+                            <p>Profissional Liberal • Saúde</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="portfolio-card" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+                        <div class="portfolio-thumb">
+                            <span class="category-tag">Eventos</span>
+                            <div class="play-icon">
+                                <i class="ph-fill ph-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Workshop Criativo</h3>
+                            <p>Highlight de Evento Presencial</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="central-cta fade-in-up hidden">
+                    <a href="https://instagram.com/filmesporisabel" target="_blank" class="button button-outline">
+                        <i class="ph ph-instagram-logo"></i>
+                        Ver mais no Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SERVIÇOS -->
+        <section class="servicos section" id="servicos">
+            <div class="container">
+                <div class="section-header text-center fade-in-up hidden">
+                    <h2 class="section-title">Serviços</h2>
+                    <p class="section-subtitle">Soluções audiovisuais sob medida</p>
+                </div>
+
+                <div class="servicos-grid">
+                    <!-- Serviço 1 -->
+                    <div class="servico-card slide-up hidden" style="--delay: 0.1s">
+                        <div class="servico-icon">
+                            <i class="ph-light ph-film-strip"></i>
+                        </div>
+                        <h3>Reels Pro</h3>
+                        <p>Vídeos dinâmicos, com roteiro focado em retenção e transições suaves
+                            profissional para o Instagram.</p>
+                    </div>
+
+                    <!-- Serviço 2 -->
+                    <div class="servico-card slide-up hidden" style="--delay: 0.2s">
+                        <div class="servico-icon">
+                            <i class="ph-light ph-device-mobile-camera"></i>
+                        </div>
+                        <h3>Stories Premium</h3>
+                        <p>Pacotes de conteúdo criativo para stories organizados e esteticamente irresistíveis, ideais
+                            para lançamentos.</p>
+                    </div>
+
+                    <!-- Serviço 3 -->
+                    <div class="servico-card slide-up hidden" style="--delay: 0.3s">
+                        <div class="servico-icon">
+                            <i class="ph-light ph-buildings"></i>
+                        </div>
+                        <h3>Vídeos Institucionais</h3>
+                        <p>Mostre o valor da sua empresa ou serviço com um vídeo de apresentação elegante, humanizado e
+                            focado em conexão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DEPOIMENTOS -->
+        <section class="depoimentos section bg-light" id="depoimentos">
+            <div class="container">
+                <div class="section-header text-center fade-in-up hidden">
+                    <h2 class="section-title">O que dizem</h2>
+                    <p class="section-subtitle">Feedback de quem já confiou no meu trabalho</p>
+                </div>
+
+                <div class="depoimentos-grid">
+                    <div class="depoimento-card fade-in hidden">
+                        <div class="quote-icon"><i class="ph-fill ph-quotes"></i></div>
+                        <p class="depoimento-texto">"A Isabel conseguiu captar exatamente a essência da minha marca. Os
+                            vídeos ficaram chiques e aumentaram muito o engajamento com meus clientes!"</p>
+                        <div class="depoimento-autor">
+                            <div class="autor-avatar"></div>
+                            <div>
+                                <strong>Mariana Silva</strong>
+                                <span>Empreendedora</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="depoimento-card fade-in hidden" style="--delay: 0.2s">
+                        <div class="quote-icon"><i class="ph-fill ph-quotes"></i></div>
+                        <p class="depoimento-texto">"Sensibilidade incrível! O vídeo do nosso evento emocionou a todos.
+                            Obrigada por registrar esse momento com tanto profissionalismo."</p>
+                        <div class="depoimento-autor">
+                            <div class="autor-avatar"></div>
+                            <div>
+                                <strong>Clínica Harmonia</strong>
+                                <span>Equipe Médica</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="depoimento-card fade-in hidden" style="--delay: 0.2s">
+                        <div class="quote-icon"><i class="ph-fill ph-quotes"></i></div>
+                        <p class="depoimento-texto">"Sensibilidade incrível! O vídeo do nosso evento emocionou a todos.
+                            Obrigada por registrar esse momento com tanto profissionalismo."</p>
+                        <div class="depoimento-autor">
+                            <div class="autor-avatar"></div>
+                            <div>
+                                <strong>Clínica Harmonia</strong>
+                                <span>Equipe Médica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="cta-final section">
+            <div class="container cta-content fade-in-up hidden">
+                <h2>Vamos criar algo incrível juntos?</h2>
+                <p>Agende um bate-papo sem compromisso e me conte sobre o seu projeto.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" class="button button-primary cta-whatsapp">
+                        <i class="ph-fill ph-whatsapp-logo"></i>
+                        Chamar no WhatsApp
+                    </a>
+                    <a href="https://instagram.com/filmesporisabel" target="_blank" class="button button-secondary">
+                        <i class="ph-fill ph-instagram-logo"></i>
+                        @filmesporisabel
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Filmes por Isabel</h3>
+                <p>Video & Story Maker</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://instagram.com/filmesporisabel" aria-label="Instagram"><i
+                        class="ph-fill ph-instagram-logo"></i></a>
+                <a href="mailto:contato@exemplo.com" aria-label="E-mail"><i class="ph-fill ph-envelope-simple"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Filmes por Isabel. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" class="fab-whatsapp" aria-label="Fale conosco pelo WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- MODAL DE VÍDEO -->
+    <div class="video-modal" id="videoModal">
+        <button class="close-modal" aria-label="Fechar Vídeo"><i class="ph ph-x"></i></button>
+        <div class="modal-content">
+            <video id="modalVideo" controls></video>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
