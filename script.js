@@ -106,6 +106,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalVideo = document.getElementById('modalVideo');
     const closeModalBtn = document.querySelector('.close-modal');
 
+    // --- 5.1 Preview Automático nos Cards quando visíveis ---
+    portfolioCards.forEach(card => {
+        const videoSrc = card.getAttribute('data-video');
+        const thumbSrc = card.getAttribute('data-thumb');
+        const thumbDiv = card.querySelector('.portfolio-thumb');
+        
+        if (videoSrc && thumbDiv) {
+            // Criar elemento de vídeo para preview
+            const previewVideo = document.createElement('video');
+            previewVideo.src = videoSrc;
+            previewVideo.muted = true;
+            previewVideo.playsInline = true;
+            previewVideo.preload = 'metadata';
+            thumbDiv.appendChild(previewVideo);
+
+            let hasPlayed = false;
+            let pauseTimeout;
+
+            // Observer para detectar quando o card está visível
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasPlayed) {
+                        // Aguarda 1 segundo e inicia o preview
+                        setTimeout(() => {
+                            if (entry.isIntersecting) {
+                                previewVideo.currentTime = 0;
+                                previewVideo.play();
+                                previewVideo.classList.add('playing');
+                                hasPlayed = true;
+
+                                // Para o vídeo após 10 segundos
+                                pauseTimeout = setTimeout(() => {
+                                    previewVideo.pause();
+                                    previewVideo.classList.remove('playing');
+                                }, 10000);
+                            }
+                        }, 1000);
+                    }
+                });
+            }, {
+                threshold: 0.5 // Inicia quando 50% do card está visível
+            });
+
+            cardObserver.observe(card);
+        }
+    });
+
     if (modal && modalVideo) {
         // Abrir Modal
         portfolioCards.forEach(card => {
