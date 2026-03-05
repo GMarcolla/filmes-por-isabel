@@ -118,31 +118,48 @@ document.addEventListener('DOMContentLoaded', () => {
             previewVideo.src = videoSrc;
             previewVideo.muted = true;
             previewVideo.playsInline = true;
-            previewVideo.preload = 'metadata';
+            previewVideo.preload = 'auto';
+            previewVideo.setAttribute('webkit-playsinline', 'true');
             thumbDiv.appendChild(previewVideo);
 
             let hasPlayed = false;
             let pauseTimeout;
+            let playTimeout;
 
             // Observer para detectar quando o card está visível
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasPlayed) {
                         // Aguarda 1 segundo e inicia o preview
-                        setTimeout(() => {
+                        playTimeout = setTimeout(() => {
                             if (entry.isIntersecting) {
                                 previewVideo.currentTime = 0;
-                                previewVideo.play();
-                                previewVideo.classList.add('playing');
-                                hasPlayed = true;
+                                
+                                // Tentar reproduzir o vídeo
+                                const playPromise = previewVideo.play();
+                                
+                                if (playPromise !== undefined) {
+                                    playPromise.then(() => {
+                                        // Vídeo começou a tocar
+                                        previewVideo.classList.add('playing');
+                                        hasPlayed = true;
 
-                                // Para o vídeo após 10 segundos
-                                pauseTimeout = setTimeout(() => {
-                                    previewVideo.pause();
-                                    previewVideo.classList.remove('playing');
-                                }, 10000);
+                                        // Para o vídeo após 10 segundos
+                                        pauseTimeout = setTimeout(() => {
+                                            previewVideo.pause();
+                                            previewVideo.classList.remove('playing');
+                                        }, 10000);
+                                    }).catch(error => {
+                                        // Autoplay foi bloqueado (comum no mobile)
+                                        console.log('Autoplay bloqueado:', error);
+                                    });
+                                }
                             }
                         }, 1000);
+                    } else if (!entry.isIntersecting) {
+                        // Limpar timeouts se o card sair da tela
+                        clearTimeout(playTimeout);
+                        clearTimeout(pauseTimeout);
                     }
                 });
             }, {

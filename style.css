@@ -405,10 +405,12 @@ video {
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .portfolio-thumb video.playing {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .portfolio-thumb::before {
