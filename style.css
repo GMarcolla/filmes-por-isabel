@@ -574,15 +574,23 @@ video {
     background-color: var(--color-gray-light);
 }
 
+.depoimento-autor div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
 .depoimento-autor strong {
     display: block;
     font-size: 1rem;
     color: var(--color-gray-dark);
+    line-height: 1.2;
 }
 
 .depoimento-autor span {
     font-size: 0.8rem;
     color: #777;
+    line-height: 1.2;
 }
 
 /* CTA FINAL */
