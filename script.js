@@ -126,6 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let pauseTimeout;
             let playTimeout;
 
+            // Função para voltar à thumbnail
+            const voltarParaThumbnail = () => {
+                previewVideo.pause();
+                previewVideo.currentTime = 0;
+                previewVideo.classList.remove('playing');
+            };
+
             // Observer para detectar quando o card está visível
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -144,11 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                         previewVideo.classList.add('playing');
                                         hasPlayed = true;
 
-                                        // Para o vídeo após 10 segundos
+                                        // Para o vídeo após 15 segundos
                                         pauseTimeout = setTimeout(() => {
-                                            previewVideo.pause();
-                                            previewVideo.classList.remove('playing');
-                                        }, 10000);
+                                            voltarParaThumbnail();
+                                        }, 15000);
                                     }).catch(error => {
                                         // Autoplay foi bloqueado (comum no mobile)
                                         console.log('Autoplay bloqueado:', error);
@@ -165,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, {
                 threshold: 0.5 // Inicia quando 50% do card está visível
             });
+
+            // Quando o vídeo terminar naturalmente, voltar à thumbnail
+            previewVideo.addEventListener('ended', voltarParaThumbnail);
 
             cardObserver.observe(card);
         }
