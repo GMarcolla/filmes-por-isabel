@@ -100,28 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedElements.forEach(el => observer.observe(el));
 
-    // --- 5. Modal de Vídeo (Portfólio) ---
+    // --- 5. Modal de Vídeo (Portfólio) com Cloudinary ---
     const portfolioCards = document.querySelectorAll('.portfolio-card');
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
     const closeModalBtn = document.querySelector('.close-modal');
 
-    // --- 5.1 Preview Automático nos Cards quando visíveis ---
+    // --- 5.1 Preview Automático nos Cards quando visíveis (usando preview leve do Cloudinary) ---
     portfolioCards.forEach(card => {
-        const videoSrc = card.getAttribute('data-video');
-        const thumbSrc = card.getAttribute('data-thumb');
-        const thumbDiv = card.querySelector('.portfolio-thumb');
-        
-        if (videoSrc && thumbDiv) {
-            // Criar elemento de vídeo para preview
-            const previewVideo = document.createElement('video');
-            previewVideo.src = videoSrc;
-            previewVideo.muted = true;
-            previewVideo.playsInline = true;
-            previewVideo.preload = 'auto';
-            previewVideo.setAttribute('webkit-playsinline', 'true');
-            thumbDiv.appendChild(previewVideo);
+        const previewSrc = card.getAttribute('data-preview');
+        const previewVideo = card.querySelector('.hover-preview');
 
+        if (previewSrc && previewVideo) {
             let hasPlayed = false;
             let pauseTimeout;
             let playTimeout;
@@ -137,17 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasPlayed) {
+                        // Carrega o preview leve do Cloudinary (3 segundos)
+                        if (!previewVideo.src || previewVideo.src === '') {
+                            previewVideo.src = previewSrc;
+                        }
+
                         // Aguarda 1 segundo e inicia o preview
                         playTimeout = setTimeout(() => {
                             if (entry.isIntersecting) {
                                 previewVideo.currentTime = 0;
-                                
-                                // Tentar reproduzir o vídeo
+
                                 const playPromise = previewVideo.play();
-                                
+
                                 if (playPromise !== undefined) {
                                     playPromise.then(() => {
-                                        // Vídeo começou a tocar
                                         previewVideo.classList.add('playing');
                                         hasPlayed = true;
 
@@ -155,21 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
                                         pauseTimeout = setTimeout(() => {
                                             voltarParaThumbnail();
                                         }, 15000);
-                                    }).catch(error => {
-                                        // Autoplay foi bloqueado (comum no mobile)
-                                        console.log('Autoplay bloqueado:', error);
+                                    }).catch(() => {
+                                        // Autoplay bloqueado (comum no mobile)
                                     });
                                 }
                             }
                         }, 1000);
                     } else if (!entry.isIntersecting) {
-                        // Limpar timeouts se o card sair da tela
                         clearTimeout(playTimeout);
                         clearTimeout(pauseTimeout);
                     }
                 });
             }, {
-                threshold: 0.5 // Inicia quando 50% do card está visível
+                threshold: 0.5
             });
 
             // Quando o vídeo terminar naturalmente, voltar à thumbnail
@@ -179,26 +170,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- 5.2 Modal: carrega vídeo completo somente ao clicar ---
     if (modal && modalVideo) {
-        // Abrir Modal
         portfolioCards.forEach(card => {
             card.addEventListener('click', () => {
                 const videoSrc = card.getAttribute('data-video');
                 if (videoSrc) {
+                    // Pausa qualquer preview em execução
+                    const preview = card.querySelector('.hover-preview');
+                    if (preview) {
+                        preview.pause();
+                        preview.classList.remove('playing');
+                    }
+
                     modalVideo.src = videoSrc;
                     modal.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Evitar scroll no body
+                    document.body.style.overflow = 'hidden';
                     modalVideo.play();
                 }
             });
         });
 
-        // Fechar Modal (Botão ou clicando fora)
+        // Fechar Modal (botão, clicando fora ou ESC)
         const fecharModal = () => {
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restaurar scroll
+            document.body.style.overflow = 'auto';
             modalVideo.pause();
-            modalVideo.src = ''; // Limpar source
+            modalVideo.src = '';
         };
 
         if (closeModalBtn) {
@@ -211,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fechar com ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 fecharModal();
