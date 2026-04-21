@@ -939,8 +939,8 @@ video {
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(4, 1fr);
-        /* 4 colunas para simular feed grid */
+        grid-template-columns: repeat(5, 1fr);
+        /* 5 colunas para acomodar o novo card */
     }
 
     .footer-content {
