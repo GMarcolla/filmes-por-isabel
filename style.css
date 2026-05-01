@@ -1,10 +1,10 @@
 :root {
     /* Identidade Visual - Cores */
     --color-white: #FFFFFF;
-    --color-pink-chic: #C80C66;
+    --color-pink-chic: #742615;
     /* Rosa vibrante e moderno */
     --color-beige-light: #FFF9F5;
-    --color-caramel: #F7A1C4;
+    --color-caramel: #a85a3a;
     --color-gray-dark: #2D2D2D;
     --color-gray-light: #F5F5F5;
     --color-text: #1A1A1A;
@@ -269,7 +269,7 @@ video {
 }
 
 .button-primary:hover {
-    background-color: #A00A54;
+    background-color: #a85a3a;
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
 }
