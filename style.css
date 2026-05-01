@@ -306,6 +306,12 @@ video {
     padding-top: 80px;
     /* Compensar header fixo */
     background: linear-gradient(135deg, var(--color-beige-light) 0%, var(--color-white) 100%);
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
 }
 
 .hero-text {
@@ -334,6 +340,37 @@ video {
     flex-direction: column;
     /* Empilhados no mobile */
     gap: var(--spacing-sm);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-caramel);
+    font-size: 2rem;
+    animation: scrollBounce 2s ease-in-out infinite;
+    transition: var(--transition-hover);
+    cursor: pointer;
+}
+
+.scroll-indicator:hover {
+    color: var(--color-pink-chic);
+    transform: translateX(-50%) scale(1.1);
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
 }
 
 /* SOBRE SECTION */
